@@ -60,21 +60,16 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-
-
-    let vowels = {}
-
-    for(let word of str){
-        for (letter of word.toLowerCase()){
-            if ('aeiou'.indexOf(letter) > -1){
-                if(vowels[letter]){
-                    vowels[letter] += 1
-                }else{
-                    vowels[letter] = 1
-                }
+    const vowels = {}
+    str.split("").forEach(function (letter){
+        if ('aeiou'.indexOf(letter) > -1){
+            if(vowels[letter]){
+                vowels[letter] += 1
+            }else{
+                vowels[letter] = 1
             }
         }
-    }
+    } )
     return vowels
    
 }
@@ -90,9 +85,7 @@ Examples:
 */
 
 function doubleValuesWithMap(arr) {
-    return arr.map((value) => {
-        return (value + value)
-    })
+    return arr.map((value) => value + value)
 }
 
 /*
@@ -104,13 +97,7 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    let newValTimesIndex = []
-    for (let index in arr){
-        newValTimesIndex.push(arr[index] * index)
-    }
-
-    return newValTimesIndex
-    
+    return arr.map((value, index) => value * index)
 }
 
 /*
@@ -179,7 +166,7 @@ Examples:
 */
 
 function removeVowels(str) {
-    return Array.from(str.toLowerCase()).filter(letter => 'aeiou'.indexOf(letter) < 0).join("")
+    return str.toLowerCase().split("").filter(letter => 'aeiou'.indexOf(letter) < 0).join("")
 }
 
 
