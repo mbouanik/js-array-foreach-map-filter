@@ -7,14 +7,8 @@ Examples:
 
 */
 function doubleValues(arr){
-    let newDoubleValues = [];
-
-    for(let value of arr){
-        newDoubleValues.push(value + value)
-    }
-    return newDoubleValues
+    return arr.map((value)=> value + value)
 }
-
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
 
@@ -24,16 +18,8 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    let newOnlyEvenValue = [];
-
-    for (let value of arr){
-        if (!(value % 2)){
-            newOnlyEvenValue.push(value)
-        }
-    }
-    return newOnlyEvenValue
+    return arr.filter((value) => !(value % 2))
 }
-
 
 /*
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
@@ -44,12 +30,7 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    let newShowFirstAndLast = [];
-
-    for (let value of arr){
-        newShowFirstAndLast.push(`${value[0]}${value[value.length -1]}`);
-    }
-    return newShowFirstAndLast;
+  return arr.map((value) => `${value[0]}${value[value.length -1]}`)
 }
 
 /*
@@ -62,14 +43,10 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    let newKeyValue = [];
-
-    for(let v of arr){
-        v[key] = value;
-        newKeyValue.push(v);
-    }
-    return newKeyValue;
-    
+    return arr.map( function (obj){
+        obj[key] = value
+        return obj
+    })
 }
 
 /*
@@ -83,6 +60,8 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
+
+
     let vowels = {}
 
     for(let word of str){
@@ -142,12 +121,7 @@ Examples:
 */
 
 function extractKey(arr, key){
-    let newExtractKey = [];
-
-    for(let obj of arr){
-        newExtractKey.push(obj[key]);
-    }
-    return newExtractKey
+    return arr.map((obj) => obj[key])
 }
 
 /*
@@ -158,12 +132,7 @@ Examples:
 */
 
 function extractFullName(arr){
-    let newExtractFullName = [];
-
-    for(let obj of arr){
-        newExtractFullName.push(`${obj['first']} ${obj['last']}`)
-    }
-    return newExtractFullName
+   return arr.map((obj) => `${obj['first']} ${obj['last']}`)
 }
 
 /*
@@ -174,14 +143,7 @@ Examples:
 */
 
 function filterByValue(arr, key) {
-    let newFilterByValue = [];
-
-    for(let obj of arr){
-        if (obj[key]){
-            newFilterByValue.push(obj)
-        }
-    }
-    return newFilterByValue
+    return arr.filter((obj) => obj[key])
 }
 
 /*
@@ -193,12 +155,7 @@ Examples:
 */
 
 function find(arr, searchValue) {
-    for(let value of arr){
-        if (value === searchValue){
-            return value;
-        }
-    }
-    return undefined;
+    return (arr.filter(value => value ===searchValue))[0]
 }
 
 /*
@@ -209,13 +166,7 @@ Examples:
 */
 
 function findInObj(arr, key, searchValue) {
-
-    for(let obj of arr){
-        if (obj[key] === searchValue){
-            return obj;
-        }
-    }
-
+    return arr.filter(obj => obj[key] === searchValue)[0]
 }
 
 /*
@@ -228,14 +179,7 @@ Examples:
 */
 
 function removeVowels(str) {
-    let newRemoveVowels = "";
-    
-    for(let letter of str.toLowerCase()){
-        if ('aeiou'.indexOf(letter) < 0){
-            newRemoveVowels += letter
-        }
-    }
-    return newRemoveVowels
+    return Array.from(str.toLowerCase()).filter(letter => 'aeiou'.indexOf(letter) < 0).join("")
 }
 
 
@@ -248,12 +192,5 @@ Examples:
 */
 
 function doubleOddNumbers(arr) {
-    let newDoubleOddNumbers = [];
-
-    for(let value of arr){
-        if ((value % 2)){
-            newDoubleOddNumbers.push(value + value)
-        }
-    }
-    return newDoubleOddNumbers
+    return arr.filter(value => (value % 2)).map(value => value * 2)
 }
