@@ -61,7 +61,7 @@ Examples:
 */
 function vowelCount(str){
     const vowels = {}
-    str.split("").forEach(function (letter){
+    str.toLowerCase().split("").forEach(function (letter){
         if ('aeiou'.indexOf(letter) > -1){
             if(vowels[letter]){
                 vowels[letter] += 1
@@ -69,7 +69,7 @@ function vowelCount(str){
                 vowels[letter] = 1
             }
         }
-    } )
+    })
     return vowels
    
 }
